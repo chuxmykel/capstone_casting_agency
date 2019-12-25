@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 from .database.models import setup_db, Movie, Actor
 
+environment = os.getenv('ENV')
 
 def create_app(test_config=None):
     # create and configure the app
@@ -23,12 +24,243 @@ def create_app(test_config=None):
         )
         return response
 
+    '''
+        Actors
+    '''
     @app.route('/')
     def home():
         return jsonify({
-            'success': True,
-            'message': 'Hello World'
+            'message': 'capstone casting agency API'
         })
+
+    @app.route('/actors', methods=['GET'])
+    def get_actors():
+        actors = Actor.query.all()
+        return jsonify({
+            'success': True,
+            'actors': [actor.format for actor in actors],
+        }), 200
+
+    @app.route('/actors/<int:id>', methods=['GET'])
+    def get_actor_by_id(id):
+        actor = Actor.query.get(id)
+
+        if actor is None:
+            abort(404)
+        else:
+            return jsonify({
+                'success': True,
+                'actor': actor.format
+            })
+
+    @app.route('/actors/<int:id>', methods=['DELETE'])
+    def delete_actor(id):
+        actor = Actor.query.get(id)
+
+        if actor is None:
+            abort(404)
+        try:
+            actor.delete()
+            return jsonify({
+                'success': True,
+                'message': f'Actor with id: {actor.id} deleted',
+            })
+        except Exception as e:
+            if environment == 'development':
+                print(e)
+            db.session.rollback()
+            abort(500)
+
+    @app.route('/actors', methods=['POST'])
+    def create_actor():
+        data = request.get_json()
+        name = data.get('name')
+        age = data.get('age')
+        gender = data.get('gender')
+
+        try:
+            actor = Actor(name=name, age=age, gender=gender)
+            actor.insert()
+            return jsonify({
+                'success': True,
+                'actor': actor.format
+            }), 201
+
+        except Exception as e:
+            if environment == 'development':
+                print(e)
+            abort(500)
+
+    @app.route('/actors/<int:id>', methods=['PATCH'])
+    def edit_actor(id):
+        actor = Actor.query.get(id)
+
+        if actor is None:
+            abort(404)
+
+        data = request.get_json()
+
+        actor.name = data.get('name', actor.name)
+        actor.age = data.get('age', actor.age)
+        actor.gender = data.get('gender', actor.gender)
+
+        try:
+            actor.update()
+            return jsonify({
+                'success': True,
+                'message': 'Actor with id: {id} updated',
+                'actor': actor.format
+            }), 200
+
+        except Exception as e:
+            if environment == 'development':
+                print(e)
+            db.session.rollback()
+            abort(500)
+
+    '''
+        Movies
+    '''
+    @app.route('/movies', methods=['GET'])
+    def get_movies():
+        movies = Movie.query.all()
+        return jsonify({
+            'success': True,
+            'movies': [movie.format for movie in movies],
+        }), 200
+
+    @app.route('/movies/<int:id>', methods=['GET'])
+    def get_movie_by_id(id):
+        movie = Movie.query.get(id)
+
+        if movie is None:
+            abort(404)
+        else:
+            return jsonify({
+                'success': True,
+                'movie': movie.format
+            })
+
+    @app.route('/movies/<int:id>', methods=['DELETE'])
+    def delete_movie(id):
+        movie = Movie.query.get(id)
+
+        if movie is None:
+            abort(404)
+        try:
+            movie.delete()
+            return jsonify({
+                'success': True,
+                'message': f'Movie with id: {movie.id} deleted',
+            })
+        except Exception as e:
+            if environment == 'development':
+                print(e)
+            db.session.rollback()
+            abort(500)
+
+    @app.route('/movies', methods=['POST'])
+    def create_movie():
+        data = request.get_json()
+        title = data.get('title')
+        release_date = data.get('release_date')
+
+        try:
+            movie = Movie(title=title, release_date=release_date)
+            movie.insert()
+            return jsonify({
+                'success': True,
+                'movie': movie.format
+            }), 201
+
+        except Exception as e:
+            if environment == 'development':
+                print(e)
+            abort(500)
+
+    @app.route('/movies/<int:id>', methods=['PATCH'])
+    def edit_movie(id):
+        movie = Movie.query.get(id)
+
+        if movie is None:
+            abort(404)
+
+        data = request.get_json()
+
+        movie.title = data.get('title')
+        movie.release_date = data.get('release_date')
+
+        try:
+            movie.update()
+            return jsonify({
+                'success': True,
+                'message': 'Movie with id: {id} updated',
+                'movie': movie.format
+            }), 200
+
+        except Exception as e:
+            if environment == 'development':
+                print(e)
+            db.session.rollback()
+            abort(500)
+    '''
+        Error handlers
+    '''
+    @app.errorhandler(400)
+    def bad_request(error):
+        return jsonify({
+            "success": False,
+            "error": 400,
+            "message": "bad request"
+        }), 400
+
+    @app.errorhandler(401)
+    def unathorized(error):
+        return jsonify({
+            "success": False,
+            "error": 401,
+            "message": "auth error",
+        }), 401
+
+    @app.errorhandler(403)
+    def forbidden(error):
+        return jsonify({
+            "success": False,
+            "error": 403,
+            "message": "forbidden",
+        }), 403
+
+    @app.errorhandler(404)
+    def not_found(error):
+        return jsonify({
+            "success": False,
+            "error": 404,
+            "message": "resource not found"
+        }), 404
+
+    @app.errorhandler(405)
+    def method_not_allowed(error):
+        return jsonify({
+            "success": False,
+            "error": 405,
+            "message": "Method not allowed"
+        }), 405
+
+    @app.errorhandler(422)
+    def unprocessable(error):
+        return jsonify({
+            "success": False,
+            "error": 422,
+            "message": "unprocessable"
+        }), 422
+
+    @app.errorhandler(500)
+    def server_error(error):
+        return jsonify({
+            "success": False,
+            "error": 500,
+            "message": "Internal server error"
+        }), 500
 
     return app
 

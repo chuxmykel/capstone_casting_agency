@@ -3,9 +3,10 @@ from flask import Flask, request, abort, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
-from .database.models import setup_db, Movie, Actor
+from models import setup_db, Movie, Actor, db
 
 environment = os.getenv('ENV')
+
 
 def create_app(test_config=None):
     # create and configure the app
@@ -78,6 +79,8 @@ def create_app(test_config=None):
         age = data.get('age')
         gender = data.get('gender')
 
+        if name is None or age is None or gender is None:
+            abort(400)
         try:
             actor = Actor(name=name, age=age, gender=gender)
             actor.insert()
@@ -108,7 +111,7 @@ def create_app(test_config=None):
             actor.update()
             return jsonify({
                 'success': True,
-                'message': 'Actor with id: {id} updated',
+                'message': f'Actor with id: {id} updated',
                 'actor': actor.format
             }), 200
 
@@ -165,6 +168,8 @@ def create_app(test_config=None):
         title = data.get('title')
         release_date = data.get('release_date')
 
+        if title is None or release_date is None:
+            abort(400)
         try:
             movie = Movie(title=title, release_date=release_date)
             movie.insert()
@@ -187,14 +192,14 @@ def create_app(test_config=None):
 
         data = request.get_json()
 
-        movie.title = data.get('title')
-        movie.release_date = data.get('release_date')
+        movie.title = data.get('title', movie.title)
+        movie.release_date = data.get('release_date', movie.release_date)
 
         try:
             movie.update()
             return jsonify({
                 'success': True,
-                'message': 'Movie with id: {id} updated',
+                'message': f'Movie with id: {id} updated',
                 'movie': movie.format
             }), 200
 

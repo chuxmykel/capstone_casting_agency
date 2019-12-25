@@ -53,10 +53,6 @@ class Movie(db.Model):
     title = Column(String(80), unique=True, nullable=False)
     release_date = Column(DateTime(), nullable=False)
 
-    def __init__(self, title, release_date):
-        self.title = title
-        self.release_date = release_date
-
     @property
     def format(self):
         return {
@@ -114,10 +110,6 @@ class Actor(db.Model):
     age = Column(Integer, nullable=False)
     gender = Column(String, nullable=False)
 
-    def __init__(self, name, age, gender):
-        self.name = name
-        self.age = age
-        self.gender = gender
 
     def insert(self):
         db.session.add(self)

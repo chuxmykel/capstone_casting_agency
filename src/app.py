@@ -4,6 +4,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 from models import setup_db, Movie, Actor, db
+from auth import requires_auth, AuthError
 
 environment = os.getenv('ENV')
 
@@ -35,7 +36,8 @@ def create_app(test_config=None):
         })
 
     @app.route('/actors', methods=['GET'])
-    def get_actors():
+    @requires_auth('get:actors')
+    def get_actors(payload):
         actors = Actor.query.all()
         return jsonify({
             'success': True,
@@ -43,7 +45,8 @@ def create_app(test_config=None):
         }), 200
 
     @app.route('/actors/<int:id>', methods=['GET'])
-    def get_actor_by_id(id):
+    @requires_auth('get:actors')
+    def get_actor_by_id(payload, id):
         actor = Actor.query.get(id)
 
         if actor is None:
@@ -55,7 +58,8 @@ def create_app(test_config=None):
             })
 
     @app.route('/actors/<int:id>', methods=['DELETE'])
-    def delete_actor(id):
+    @requires_auth('delete:actors')
+    def delete_actor(payload, id):
         actor = Actor.query.get(id)
 
         if actor is None:
@@ -73,7 +77,8 @@ def create_app(test_config=None):
             abort(500)
 
     @app.route('/actors', methods=['POST'])
-    def create_actor():
+    @requires_auth('create:actors')
+    def create_actor(payload):
         data = request.get_json()
         name = data.get('name')
         age = data.get('age')
@@ -95,7 +100,8 @@ def create_app(test_config=None):
             abort(500)
 
     @app.route('/actors/<int:id>', methods=['PATCH'])
-    def edit_actor(id):
+    @requires_auth('update:actors')
+    def edit_actor(payload, id):
         actor = Actor.query.get(id)
 
         if actor is None:
@@ -125,7 +131,8 @@ def create_app(test_config=None):
         Movies
     '''
     @app.route('/movies', methods=['GET'])
-    def get_movies():
+    @requires_auth('get:movies')
+    def get_movies(payload):
         movies = Movie.query.all()
         return jsonify({
             'success': True,
@@ -133,7 +140,8 @@ def create_app(test_config=None):
         }), 200
 
     @app.route('/movies/<int:id>', methods=['GET'])
-    def get_movie_by_id(id):
+    @requires_auth('get:movies')
+    def get_movie_by_id(payload, id):
         movie = Movie.query.get(id)
 
         if movie is None:
@@ -145,7 +153,8 @@ def create_app(test_config=None):
             })
 
     @app.route('/movies/<int:id>', methods=['DELETE'])
-    def delete_movie(id):
+    @requires_auth('delete:movies')
+    def delete_movie(payload, id):
         movie = Movie.query.get(id)
 
         if movie is None:
@@ -163,7 +172,8 @@ def create_app(test_config=None):
             abort(500)
 
     @app.route('/movies', methods=['POST'])
-    def create_movie():
+    @requires_auth('create:movies')
+    def create_movie(payload):
         data = request.get_json()
         title = data.get('title')
         release_date = data.get('release_date')
@@ -184,7 +194,8 @@ def create_app(test_config=None):
             abort(500)
 
     @app.route('/movies/<int:id>', methods=['PATCH'])
-    def edit_movie(id):
+    @requires_auth('update:movies')
+    def edit_movie(payload, id):
         movie = Movie.query.get(id)
 
         if movie is None:

@@ -337,4 +337,4 @@ For convenience, JWTs are provided for the reviewer of this project to use for t
 ## Licensing
 
 Copyright &copy; 2019, Ngwobia, Chukwudi M.
-The code in this project is licensed under [ISC LICENSE](https://github.com/chuxmykel/capstone_casting_agency/blob/develop/LICENSE)
+The code in this project is licensed under [ISC LICENSE](https://github.com/chuxmykel/capstone_casting_agency/blob/master/LICENSE)

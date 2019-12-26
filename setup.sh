@@ -1,2 +1,3 @@
-export FLASK_APP='./src/app'
+export FLASK_APP='app'
 export ENV='production'
+python manage.py db upgrade

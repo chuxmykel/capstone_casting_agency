@@ -1,0 +1,392 @@
+{
+	"info": {
+		"_postman_id": "cb8956f3-88e5-4bd8-b98b-a90e3a51a3e0",
+		"name": "Udacity Capstone Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Actors",
+			"item": [
+				{
+					"name": "Get Actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/actors",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"actors"
+							]
+						},
+						"description": "This endpoints fetches all actors on the platform"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Actor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/actors/3",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"actors",
+								"3"
+							]
+						},
+						"description": "An endpoint to delete a specific actor"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Actor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/actors/3",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"actors",
+								"3"
+							]
+						},
+						"description": "An endpoint to get a specific actor by his ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Actor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5qQkRNME0yTlVKRU1qWkJRVUpEUmpNeFFqSkZSVVJETnpWR05UWkROelZDTXpZM09EazBPQSJ9.eyJpc3MiOiJodHRwczovL2F1dGhlbnRpcXVlLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDExODIwOTI1OTU4OTM4NjIyNjkwMyIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUwMDAvIiwiaHR0cHM6Ly9hdXRoZW50aXF1ZS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTc3MzE0NDk5LCJleHAiOjE1Nzc0MDA4OTksImF6cCI6IlN5WE41VUZsOWNNOXVvNG96WG40QjdkeFdlTWNBanBlIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbImNyZWF0ZTphY3RvcnMiLCJjcmVhdGU6bW92aWVzIiwiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInVwZGF0ZTphY3RvcnMiLCJ1cGRhdGU6bW92aWVzIl19.BBfxUDKcwDdD6pWhvPktf0fdfY-XdxWMQTJw6URFUQkv8LlobCZwOHWZ0fu25ViqmT_RF8Es-dthwTsmng6-9YtWXOMdp2feW_XsW_a_9imsaG5yhMj_MpFD8nRkXM8KJgLqWojlhsJ9AOnX5gzFTWbRRzfutPk7HkW2miPrk6iP-AHl6x4HGZ0_4H8rVZA_nie_PWbAudloGcsRsug8K5FHZcHfV_gWddGiZBf-atrcTCD7LhVqhUi5eEiH23IdGV_on7v08QSlN5PgLFl8OUCSgV2qDbdTgfPdk_Y1mGOHhLLLs1nz-UjLnWc7Hu3m5JKUbLMIcRRjZb3bI2iwIw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"James Brown\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/actors/1",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": "This endpoint updates a specific actor"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Actor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5qQkRNME0yTlVKRU1qWkJRVUpEUmpNeFFqSkZSVVJETnpWR05UWkROelZDTXpZM09EazBPQSJ9.eyJpc3MiOiJodHRwczovL2F1dGhlbnRpcXVlLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDExODIwOTI1OTU4OTM4NjIyNjkwMyIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUwMDAvIiwiaHR0cHM6Ly9hdXRoZW50aXF1ZS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTc3MzE0NDk5LCJleHAiOjE1Nzc0MDA4OTksImF6cCI6IlN5WE41VUZsOWNNOXVvNG96WG40QjdkeFdlTWNBanBlIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbImNyZWF0ZTphY3RvcnMiLCJjcmVhdGU6bW92aWVzIiwiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInVwZGF0ZTphY3RvcnMiLCJ1cGRhdGU6bW92aWVzIl19.BBfxUDKcwDdD6pWhvPktf0fdfY-XdxWMQTJw6URFUQkv8LlobCZwOHWZ0fu25ViqmT_RF8Es-dthwTsmng6-9YtWXOMdp2feW_XsW_a_9imsaG5yhMj_MpFD8nRkXM8KJgLqWojlhsJ9AOnX5gzFTWbRRzfutPk7HkW2miPrk6iP-AHl6x4HGZ0_4H8rVZA_nie_PWbAudloGcsRsug8K5FHZcHfV_gWddGiZBf-atrcTCD7LhVqhUi5eEiH23IdGV_on7v08QSlN5PgLFl8OUCSgV2qDbdTgfPdk_Y1mGOHhLLLs1nz-UjLnWc7Hu3m5JKUbLMIcRRjZb3bI2iwIw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"James Brown\",\n\t\"age\": 24,\n\t\"gender\": \"male\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/actors",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5qQkRNME0yTlVKRU1qWkJRVUpEUmpNeFFqSkZSVVJETnpWR05UWkROelZDTXpZM09EazBPQSJ9.eyJpc3MiOiJodHRwczovL2F1dGhlbnRpcXVlLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDExODIwOTI1OTU4OTM4NjIyNjkwMyIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUwMDAvIiwiaHR0cHM6Ly9hdXRoZW50aXF1ZS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTc3MzE0NDk5LCJleHAiOjE1Nzc0MDA4OTksImF6cCI6IlN5WE41VUZsOWNNOXVvNG96WG40QjdkeFdlTWNBanBlIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbImNyZWF0ZTphY3RvcnMiLCJjcmVhdGU6bW92aWVzIiwiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInVwZGF0ZTphY3RvcnMiLCJ1cGRhdGU6bW92aWVzIl19.BBfxUDKcwDdD6pWhvPktf0fdfY-XdxWMQTJw6URFUQkv8LlobCZwOHWZ0fu25ViqmT_RF8Es-dthwTsmng6-9YtWXOMdp2feW_XsW_a_9imsaG5yhMj_MpFD8nRkXM8KJgLqWojlhsJ9AOnX5gzFTWbRRzfutPk7HkW2miPrk6iP-AHl6x4HGZ0_4H8rVZA_nie_PWbAudloGcsRsug8K5FHZcHfV_gWddGiZBf-atrcTCD7LhVqhUi5eEiH23IdGV_on7v08QSlN5PgLFl8OUCSgV2qDbdTgfPdk_Y1mGOHhLLLs1nz-UjLnWc7Hu3m5JKUbLMIcRRjZb3bI2iwIw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a03766dd-d77f-4838-89fe-5c7e09146eb9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "0515c72a-e612-47c5-bbd2-942f55d36965",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "Get Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/movies",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"movies"
+							]
+						},
+						"description": "This endpoints fetches all actors on the platform"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/movies/3",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"movies",
+								"3"
+							]
+						},
+						"description": "An endpoint to delete a specific actor"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/movies/3",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"movies",
+								"3"
+							]
+						},
+						"description": "An endpoint to get a specific actor by his ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Movie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5qQkRNME0yTlVKRU1qWkJRVUpEUmpNeFFqSkZSVVJETnpWR05UWkROelZDTXpZM09EazBPQSJ9.eyJpc3MiOiJodHRwczovL2F1dGhlbnRpcXVlLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDExODIwOTI1OTU4OTM4NjIyNjkwMyIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUwMDAvIiwiaHR0cHM6Ly9hdXRoZW50aXF1ZS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTc3MzE0NDk5LCJleHAiOjE1Nzc0MDA4OTksImF6cCI6IlN5WE41VUZsOWNNOXVvNG96WG40QjdkeFdlTWNBanBlIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbImNyZWF0ZTphY3RvcnMiLCJjcmVhdGU6bW92aWVzIiwiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInVwZGF0ZTphY3RvcnMiLCJ1cGRhdGU6bW92aWVzIl19.BBfxUDKcwDdD6pWhvPktf0fdfY-XdxWMQTJw6URFUQkv8LlobCZwOHWZ0fu25ViqmT_RF8Es-dthwTsmng6-9YtWXOMdp2feW_XsW_a_9imsaG5yhMj_MpFD8nRkXM8KJgLqWojlhsJ9AOnX5gzFTWbRRzfutPk7HkW2miPrk6iP-AHl6x4HGZ0_4H8rVZA_nie_PWbAudloGcsRsug8K5FHZcHfV_gWddGiZBf-atrcTCD7LhVqhUi5eEiH23IdGV_on7v08QSlN5PgLFl8OUCSgV2qDbdTgfPdk_Y1mGOHhLLLs1nz-UjLnWc7Hu3m5JKUbLMIcRRjZb3bI2iwIw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Bare Folly\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/movies/1",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						},
+						"description": "This endpoint updates a specific actor"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Movie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5qQkRNME0yTlVKRU1qWkJRVUpEUmpNeFFqSkZSVVJETnpWR05UWkROelZDTXpZM09EazBPQSJ9.eyJpc3MiOiJodHRwczovL2F1dGhlbnRpcXVlLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDExODIwOTI1OTU4OTM4NjIyNjkwMyIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUwMDAvIiwiaHR0cHM6Ly9hdXRoZW50aXF1ZS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTc3MzE0NDk5LCJleHAiOjE1Nzc0MDA4OTksImF6cCI6IlN5WE41VUZsOWNNOXVvNG96WG40QjdkeFdlTWNBanBlIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbImNyZWF0ZTphY3RvcnMiLCJjcmVhdGU6bW92aWVzIiwiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInVwZGF0ZTphY3RvcnMiLCJ1cGRhdGU6bW92aWVzIl19.BBfxUDKcwDdD6pWhvPktf0fdfY-XdxWMQTJw6URFUQkv8LlobCZwOHWZ0fu25ViqmT_RF8Es-dthwTsmng6-9YtWXOMdp2feW_XsW_a_9imsaG5yhMj_MpFD8nRkXM8KJgLqWojlhsJ9AOnX5gzFTWbRRzfutPk7HkW2miPrk6iP-AHl6x4HGZ0_4H8rVZA_nie_PWbAudloGcsRsug8K5FHZcHfV_gWddGiZBf-atrcTCD7LhVqhUi5eEiH23IdGV_on7v08QSlN5PgLFl8OUCSgV2qDbdTgfPdk_Y1mGOHhLLLs1nz-UjLnWc7Hu3m5JKUbLMIcRRjZb3bI2iwIw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Brownies\",\n\t\"release_date\": \"2-26-2000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/movies",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5qQkRNME0yTlVKRU1qWkJRVUpEUmpNeFFqSkZSVVJETnpWR05UWkROelZDTXpZM09EazBPQSJ9.eyJpc3MiOiJodHRwczovL2F1dGhlbnRpcXVlLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDExODIwOTI1OTU4OTM4NjIyNjkwMyIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUwMDAvIiwiaHR0cHM6Ly9hdXRoZW50aXF1ZS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTc3MzE0NDk5LCJleHAiOjE1Nzc0MDA4OTksImF6cCI6IlN5WE41VUZsOWNNOXVvNG96WG40QjdkeFdlTWNBanBlIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbImNyZWF0ZTphY3RvcnMiLCJjcmVhdGU6bW92aWVzIiwiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInVwZGF0ZTphY3RvcnMiLCJ1cGRhdGU6bW92aWVzIl19.BBfxUDKcwDdD6pWhvPktf0fdfY-XdxWMQTJw6URFUQkv8LlobCZwOHWZ0fu25ViqmT_RF8Es-dthwTsmng6-9YtWXOMdp2feW_XsW_a_9imsaG5yhMj_MpFD8nRkXM8KJgLqWojlhsJ9AOnX5gzFTWbRRzfutPk7HkW2miPrk6iP-AHl6x4HGZ0_4H8rVZA_nie_PWbAudloGcsRsug8K5FHZcHfV_gWddGiZBf-atrcTCD7LhVqhUi5eEiH23IdGV_on7v08QSlN5PgLFl8OUCSgV2qDbdTgfPdk_Y1mGOHhLLLs1nz-UjLnWc7Hu3m5JKUbLMIcRRjZb3bI2iwIw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a03766dd-d77f-4838-89fe-5c7e09146eb9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "0515c72a-e612-47c5-bbd2-942f55d36965",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"id": "178bea6c-ce91-4a0c-a5d6-eed0d78a6c90",
+			"key": "local_url",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -13,6 +13,7 @@ manager = Manager(app)
 
 manager.add_command('db', MigrateCommand)
 
+
 @manager.command
 def seed():
     Movie(title='Random movie 1', release_date=datetime(2005, 6, 23)).insert()

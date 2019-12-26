@@ -110,7 +110,6 @@ class Actor(db.Model):
     age = Column(Integer, nullable=False)
     gender = Column(String, nullable=False)
 
-
     def insert(self):
         db.session.add(self)
         db.session.commit()

@@ -325,4 +325,4 @@ Now the server will go live and listen for requests
 ## Licensing
 
 Copyright &copy; 2019, Ngwobia, Chukwudi M.
-The code in this project is licensed under [ISC LICENSE](https://github.com/chuxmykel/capstone_casting_agency/blob/develop/LICENSE)
+The code in this project is licensed under [ISC LICENSE](https://github.com/chuxmykel/capstone_casting_agency/blob/master/LICENSE)
